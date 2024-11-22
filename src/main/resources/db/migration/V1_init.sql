@@ -1,0 +1,21 @@
+-- TABLE PACIENTE --
+CREATE TABLE IF NOT EXISTS paciente{
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL,
+    sexo VARCHAR(1) NOT NULL CHECK (sexo in('M', 'F')),
+    alta BOOLEAN NOT NULL,
+    especie VARCHAR(255) NOT NULL,
+    id_dono BIGINT NOT NULL,
+    FOREIGN KEY (id_dono) REFERENCES dono(id)
+};
+
+-- TABLE DONO --
+CREATE TABLE IF NOT EXISTS dono {
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL,
+    cpf VARCHAR(25) NOT NULL,
+    id_paciente BIGINT NOT NULL,
+    FOREIGN KEY (id_paciente) REFERENCES paciente(id)
+}
+
+
