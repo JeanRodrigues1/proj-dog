@@ -27,7 +27,7 @@ public class PacienteService {
         return pacienteInterface.findAll();
     }
 
-    public Optional<Paciente> getDonoById(Long id){
+    public Optional<Paciente> getPacienteById(Long id){
         return pacienteInterface.findById(id);
     }
 
