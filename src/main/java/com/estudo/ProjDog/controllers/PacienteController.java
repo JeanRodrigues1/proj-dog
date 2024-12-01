@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.estudo.ProjDog.entity.Dono;
 import com.estudo.ProjDog.entity.Paciente;
 import com.estudo.ProjDog.services.PacienteService;
+import com.estudo.ProjDog.repository.DonoInterface;
 
 import jakarta.persistence.EntityNotFoundException;
 
@@ -31,6 +33,8 @@ public class PacienteController {
 
     @Autowired
     private PacienteService pacienteService;
+
+    @Autowired DonoInterface donoInterface;
 
     @GetMapping("/all")
     public ResponseEntity<List<Paciente>> getPacientes(){
@@ -68,17 +72,31 @@ public class PacienteController {
             List<Paciente> pacientes = pacienteService.getPacientesByDonoId(id_dono);
             return ResponseEntity.ok(pacientes);
         } catch (EntityNotFoundException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @PostMapping("/save")
     public ResponseEntity<Paciente> savePaciente(@RequestBody Paciente paciente) {
-        Paciente pacienteObj = pacienteService.savePaciente(paciente);
-        return new ResponseEntity<>(pacienteObj, HttpStatus.OK);
+        try {
+            Long donoId = paciente.getDono().getId();
+
+            Optional<Dono> donoOptional = donoInterface.findById(donoId);
+            
+            if (donoOptional.isPresent()) {
+                Paciente pacienteObj = pacienteService.savePaciente(paciente);
+                return new ResponseEntity<>(pacienteObj, HttpStatus.CREATED);
+            } else {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
+
+    
 
     @PutMapping("/update/{id}")
     public ResponseEntity<Paciente> updatePacienteById(@PathVariable Long id, @RequestBody Paciente newPacienteData) {

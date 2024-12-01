@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.estudo.ProjDog.entity.Paciente;
 
 public interface PacienteInterface extends JpaRepository<Paciente, Long> {
-    Optional<List<Paciente>> findByNameContainingIgnoreCase(String nome);
+    Optional<List<Paciente>> findByNomeContainingIgnoreCase(String nome);
     
-    Optional<Paciente> findByNameIgnoreCase(String nome);
+    Optional<Paciente> findByNomeIgnoreCase(String nome);
 }

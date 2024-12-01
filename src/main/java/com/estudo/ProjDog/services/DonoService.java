@@ -32,7 +32,7 @@ public class DonoService {
     }
 
     public List<Dono> getDonosByName(String nome){
-        Optional<List<Dono>> donos = donoInterface.findByNameContainingIgnoreCase(nome);
+        Optional<List<Dono>> donos = donoInterface.findByNomeContainingIgnoreCase(nome);
         if (donos.isPresent()){
             return donos.get();
         } else {

@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.estudo.ProjDog.entity.Dono;
 
 public interface DonoInterface extends JpaRepository<Dono, Long> {
-    Optional<List<Dono>> findByNameContainingIgnoreCase(String nome);
+    Optional<List<Dono>> findByNomeContainingIgnoreCase(String nome);
     
-    Optional<Dono> findByNameIgnoreCase(String nome);
+    Optional<Dono> findByNomeIgnoreCase(String nome);
 }

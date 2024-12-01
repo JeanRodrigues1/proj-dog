@@ -2,6 +2,8 @@ package com.estudo.ProjDog.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,6 +22,7 @@ public class Dono {
    private String cpf;
 
    @OneToMany(mappedBy = "dono", cascade = CascadeType.ALL)
+   @JsonBackReference 
    private List<Paciente> pacientes;
 
    //Constructor vazio 

@@ -32,7 +32,7 @@ public class PacienteService {
     }
 
     public List<Paciente> getPacientesByName(String nome){
-        Optional<List<Paciente>> pacientes = pacienteInterface.findByNameContainingIgnoreCase(nome);
+        Optional<List<Paciente>> pacientes = pacienteInterface.findByNomeContainingIgnoreCase(nome);
         if (pacientes.isPresent()){
             return pacientes.get();
         } else {
@@ -53,9 +53,18 @@ public class PacienteService {
         }
     }
 
-   public Paciente savePaciente(Paciente paciente){
-    return pacienteInterface.save(paciente);
-   }
+    public Paciente savePaciente(Paciente paciente){
+        Long donoId = paciente.getDono().getId();
+        Optional<Dono> dono = donoInterface.findById(donoId);
+        if (dono.isPresent()) {
+            paciente.setDono(dono.get());
+            return pacienteInterface.save(paciente);
+        } else {
+            throw new EntityNotFoundException("Dono não encontrado para o ID: " + donoId);
+        }
+    }
+    
+    
 
    public Paciente updatePacienteById(Long id, Paciente newPacienteData){
     Optional<Paciente> pacienteData = pacienteInterface.findById(id);
