@@ -19,6 +19,6 @@ CRUD
 
 
 # Tecnologias Utilizadas
-[Java](https://dev.java/) - Linguagem de Programação.
-[Visual Code Studip](https://code.visualstudio.com/) - IDE.
-[H2](https://www.h2database.com/html/main.html) - DataBase Relacional.
+.[Java](https://dev.java/) - Linguagem de Programação.
+.[Visual Code Studip](https://code.visualstudio.com/) - IDE.
+.[H2](https://www.h2database.com/html/main.html) - DataBase Relacional.
