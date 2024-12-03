@@ -16,3 +16,9 @@ CRUD
 
 # DELETE-
 ![DELETE](https://github.com/user-attachments/assets/703ede5a-1224-4728-9e68-3e0119fb060b)
+
+
+# Tecnologias Utilizadas
+[Java](https://dev.java/) - Linguagem de Programação.
+[Visual Code Studip](https://code.visualstudio.com/) - IDE.
+[H2](https://www.h2database.com/html/main.html) - DataBase Relacional.
