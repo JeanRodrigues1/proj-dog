@@ -42,7 +42,7 @@ public class PacienteController {
         if (pacientes.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else{
-            return new ResponseEntity<>(HttpStatus.OK);
+            return new ResponseEntity<>(pacientes, HttpStatus.OK);
         }
     }
 

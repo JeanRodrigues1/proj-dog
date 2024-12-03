@@ -18,7 +18,6 @@ public class Paciente {
     private Long id;
     private String nome;
     private String sexo;
-    private Boolean alta;
     private String especie;    
     @ManyToOne
     @JoinColumn(name = "id_dono", nullable = false)
@@ -31,11 +30,10 @@ public class Paciente {
     }
     
     // Construtor com todos os atributos
-    public Paciente(Long id, String nome, String sexo, Boolean alta, String especie){
+    public Paciente(Long id, String nome, String sexo, String especie){
         this.id = id;
         this.nome = nome;
         this.sexo = sexo;
-        this.alta = alta;
         this.especie = especie;
     }
 
@@ -62,14 +60,6 @@ public class Paciente {
 
     public void setSexo(String sexo) {
         this.sexo = sexo;
-    }
-
-    public Boolean getAlta() {
-        return alta;
-    }
-
-    public void setAlta(Boolean alta) {
-        this.alta = alta;
     }
 
     public String getEspecie() {

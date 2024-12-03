@@ -72,7 +72,6 @@ public class PacienteService {
         Paciente updatePacienteData = pacienteData.get();
         updatePacienteData.setNome(newPacienteData.getNome());
         updatePacienteData.setEspecie(newPacienteData.getEspecie());
-        updatePacienteData.setAlta(newPacienteData.getAlta());
         updatePacienteData.setSexo(newPacienteData.getSexo());
         if (newPacienteData.getDono() != null){
             updatePacienteData.setDono(newPacienteData.getDono());
